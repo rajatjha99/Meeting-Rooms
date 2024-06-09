@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "meeting-room-booking"
+  "cli": {
+    "analytics": false
+  }
 }
