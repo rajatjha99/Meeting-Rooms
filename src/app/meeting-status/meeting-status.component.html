@@ -1,0 +1,57 @@
+<div class="container mt-3">
+    <h5 class="font-weight-bold mt-3">Your Upcoming Meetings</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>User Name</th>
+                <th>Agenda</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let meeting of meetings; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{meeting.username}}</td>
+                <td>{{meeting.agenda}}</td>
+                <td>{{meeting.date}}</td>
+                <td>{{meeting.fromTime}} - {{meeting.toTime}}</td>
+                <td>{{meeting.room}} <button class="deleteButton text-danger" (click)="deleteMeeting(meeting.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-5 roomMeetingsContainer">
+    <h5 class="font-weight-bold">Rooms Meeting Details</h5>
+    <div class="form-group">
+        <label for="selectRoom">Select Meeting Room</label>
+        <select id="selectRoom" class="form-control w-25" [(ngModel)]="selectedRoom" (change)="onRoomChange()">
+            <option *ngFor="let room of rooms" [value]="room">{{ room }}</option>
+        </select>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>User Name</th>
+                <th>Agenda</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let meeting of roomMeetings; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ meeting.username }}</td>
+                <td>{{ meeting.agenda }}</td>
+                <td>{{ meeting.date }}</td>
+                <td>{{ meeting.fromTime }} - {{ meeting.toTime }}</td>
+                <td>{{ meeting.room }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

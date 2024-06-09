@@ -1,0 +1,43 @@
+<div class="container mt-3">
+    <form (ngSubmit)="onSubmit(bookingForm)" #bookingForm="ngForm">
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username" class="form-control" [(ngModel)]="username" required>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="date">Meeting Date</label>
+                    <input type="date" id="date" name="date" class="form-control" [(ngModel)]="date" required>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="fromTime">Start Time</label>
+                    <input type="time" id="fromTime" name="fromTime" class="form-control" [(ngModel)]="fromTime" required>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="toTime">End Time</label>
+                    <input type="time" id="toTime" name="toTime" class="form-control" [(ngModel)]="toTime" required>
+                </div>
+            </div>
+        </div>
+        <div class="text-danger mb-3" *ngIf="fromTime && toTime && !isValidTime(fromTime, toTime)">
+            **time should be between 09:00AM and 06:00PM. Meeting should be of atleast 30 minutes
+        </div>
+        <div class="form-group" *ngIf="showOtherOptions">
+            <label for="room">Meeting Room</label>
+            <select id="room" name="room" class="form-control" [(ngModel)]="room" required>
+                <option *ngFor="let room of rooms" [value]="room.name">{{ room.name }}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="showOtherOptions">
+            <label for="agenda">Agenda</label>
+            <textarea id="agenda" name="agenda" class="form-control" [(ngModel)]="agenda" required></textarea>
+        </div>
+        <button type="button" class="btn btn-primary btn-block w-25" *ngIf="showOtherOptions === false" (click)="valueSelected()" [disabled]="!date || !fromTime || !toTime || !isValidTime(fromTime, toTime)">Search Room</button>
+        <button type="submit" class="btn btn-primary btn-block w-25" *ngIf="showOtherOptions === true">Book Meeting</button>
+    </form>
+</div>

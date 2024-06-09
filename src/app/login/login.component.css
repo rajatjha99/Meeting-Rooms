@@ -1,0 +1,42 @@
+/* Container to hold the form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    height: 100vh;
+    /* Full viewport height */
+    padding: 0 20px;
+    /* Ensure there's some padding for smaller screens */
+}
+
+/* Styling for the form */
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    /* Maximum width of the form */
+    padding: 20px;
+    background-color: white;
+    /* White background for the form */
+    border: 1px solid #dee2e6;
+    /* Optional: border around the form */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: subtle shadow */
+}
+
+/* Additional styling for form elements */
+.login-form h3 {
+    margin-bottom: 20px;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form .btn {
+    margin-top: 10px;
+    width: 35%;
+}
